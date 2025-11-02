@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TEEJAN TEEPEE | Full Stack Developer Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<style>
+:root {
+  --bg-gradient: linear-gradient(120deg, #131d3c 55%, #00e4ff 96%, #062a46 100%);
+  --card-bg: linear-gradient(135deg, #1e2c48 75%, #00e4ff24 100%);
+  --text-main: #eef3fb;
+  --text-accent: #15e7ed;
+  --title-accent: #00a0dc;
+  --highlight: #00e4ff;
+  --card-border: #00e4ff56;
+  --shadow-main: 0 2px 12px #00e4ff22;
+  --btn-gradient: linear-gradient(90deg, #00a0dc 40%, #00e4ff 100%);
+}
+body {
+  background: var(--bg-gradient);
+  color: var(--text-main);
+  font-family: 'Montserrat', sans-serif;
+  min-height: 100vh;
+  margin: 0;
+  overflow-x: hidden;
+  transition: background 0.3s;
+}
+body.light-theme {
+  background: #f7f8fa;
+  color: #24242e;
+}
+.header {
+  background: rgba(22, 32, 68, 0.97);
+  box-shadow: var(--shadow-main);
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 40px;
+  border-bottom: 2px solid #00e4ff28;
+}
+.nav {
+  display: flex;
+  gap: 38px;
+}
+.nav a {
+  color: var(--title-accent);
+  font-weight: 700;
+  text-decoration: none;
+  font-size: 1.09rem;
+  text-shadow: 0 1px 8px #00e4ff66;
+  letter-spacing: 1px;
+  transition: .22s;
+}
+.nav a:hover {
+  color: var(--highlight);
+}
+.theme-toggle {
+  cursor: pointer;
+  font-size: 1.5rem;
+  color: var(--highlight);
+}
+.scrollTopBtn {
+  position:fixed;
+  bottom:34px;
+  right:34px;
+  display:none;
+  padding:16px 20px;
+  border-radius:40px;
+  background:var(--highlight);
+  color:#131d3c;
+  font-weight:bold;
+  font-size:1.13rem;
+  box-shadow:var(--shadow-main);
+  z-index:999;
+  cursor:pointer;
+  border:none;
+  outline:none;
+  transition:background .2s;
+}
+.scrollTopBtn:hover {
+  background:var(--title-accent);
+  color:#fff;
+}
+/* Hero Section */
+.hero {
+  height: 95vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(circle at top, #242a42 55%, #00e4ff18 99%), var(--bg-gradient);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero h1 {
+  font-size: 4.3rem;
+  font-weight: 900;
+  letter-spacing: 4px;
+  background: linear-gradient(90deg, #00beff 35%, #01579b 65%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 32px #00e4ff99;
+}
+.hero p {
+  font-size: 1.5rem;
+  color: #13c9e0;
+  margin: 18px;
+}
+.typing {
+  display: inline-block;
+  border-right: 2px solid var(--highlight);
+  font-weight: 800;
+  font-size: 2rem;
+}
+.cta-buttons {
+  display: flex;
+  gap: 28px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 32px;
+}
+.cta-button {
+  padding: 16px 42px;
+  border-radius: 40px;
+  background: var(--btn-gradient);
+  color: #fff;
+  font-weight: 800;
+  font-size: 1.07rem;
+  letter-spacing: 1px;
+  text-decoration: none;
+  box-shadow: 0 0 24px #00e4ff44;
+  transition: .28s;
+}
+.cta-button:hover {
+  background: var(--highlight);
+  color: #131d3c;
+  transform: scale(1.04);
+}
+/* Sections */
+.section {
+  padding: 100px 5% 85px;
+  max-width: 1200px;
+  margin: auto;
+}
+.section-title {
+  font-size: 2.75rem;
+  font-weight: 900;
+  text-align: center;
+  margin-bottom: 58px;
+  color: var(--title-accent);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 0 0 17px var(--highlight);
+}
+.section-title::after {
+  content: '';
+  display: block;
+  width: 82px;
+  height: 5px;
+  background: var(--highlight);
+  margin: 12px auto 0;
+  border-radius: 3px;
+  box-shadow: 0 0 12px var(--highlight);
+}
+/* About */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 62px;
+  align-items: center;
+}
+.profile-image {
+  width: 100%;
+  max-width: 230px;
+  border-radius: 20px;
+  border: 5px solid var(--highlight);
+  box-shadow: 0 0 35px #00e4ff66;
+  object-fit:cover;
+  display:block;
+}
+.about-text h2 {
+  font-size: 2.1rem;
+  margin-bottom: 12px;
+  color: var(--highlight);
+}
+.about-text p {
+  font-size: 1.19rem;
+  color: var(--text-main);
+  margin-bottom: 15px;
+}
+.tech-stack {
+  margin-top: 25px;
+  padding: 12px;
+  background: var(--card-bg);
+  border-radius: 12px;
+  box-shadow: 0 0 10px #00e4ff21;
+  border-left: 6px solid var(--highlight);
+  display:flex;
+  gap:22px;
+  align-items:center;
+  flex-wrap:wrap;
+}
+.tech-stack-icon {
+  font-size: 2.5rem;
+  margin-right:8px;
+  color:var(--highlight);
+}
+.tech-stack span {
+  font-size:1.18rem;
+  margin-right:16px;
+}
+.about-fun-facts {
+  margin-top: 22px;
+  padding: 18px;
+  background: var(--card-bg);
+  border-radius: 15px;
+  box-shadow: 0 0 15px #00e4ff21;
+  border-left: 6px solid var(--highlight);
+}
+.about-fun-facts h3 {
+  color: #00a0dc;
+}
+.about-fun-facts ul {
+  color: #00e4ff;
+  font-size: 1.07rem;
+}
+/* Skills */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 38px;
+}
+.skill-card {
+  background: var(--card-bg);
+  padding: 33px 16px;
+  border-radius: 16px;
+  box-shadow: var(--shadow-main);
+  border: 2px solid var(--card-border);
+  transition: .23s;
+  text-align: center;
+}
+.skill-card:hover {
+  transform: translateY(-8px) scale(1.06);
+  box-shadow: 0 0 44px #00e4ff99;
+  border: 2px solid #00e4ffb0;
+}
+.skill-card h3 {
+  color: var(--highlight);
+  font-size: 1.25rem;
+  letter-spacing: 1px;
+}
+.skill-card p {
+  font-size: 1.05rem;
+  color: #bffeff;
+  margin-top: 7px;
+}
+/* Timeline */
+.timeline {
+  position: relative;
+  width: 100%;
+  margin: 55px auto;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(180deg, #00bfff 37%, transparent 100%);
+  transform: translateX(-50%);
+  border-radius: 2px;
+}
+.timeline-item {
+  width: 45%;
+  padding: 24px;
+  position: relative;
+  background: var(--card-bg);
+  border-radius: 14px;
+  margin-bottom: 33px;
+  color: var(--text-main);
+  box-shadow: 0 0 19px #00e4ff21;
+  opacity: 0;
+  transform: translateY(28px);
+  transition: all 1.1s cubic-bezier(.52, .24, .71, 1);
+  border: 2px solid var(--highlight);
+}
+.timeline-item.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.timeline-item.left {
+  left: 0;
+  text-align: right;
+}
+.timeline-item.right {
+  left: 55%;
+  text-align: left;
+}
+.timeline-item h3 {
+  color: var(--highlight);
+}
+.timeline-item p {
+  color: #bffeff;
+}
+.timeline-item::after {
+  content: '';
+  position: absolute;
+  width: 17px;
+  height: 17px;
+  background: var(--highlight);
+  border-radius: 50%;
+  top: 25px;
+  border: 3px solid var(--title-accent);
+  z-index: 9;
+}
+.timeline-item.left::after {
+  right: -46px;
+}
+.timeline-item.right::after {
+  left: -46px;
+}
+/* Projects */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(305px, 1fr));
+  gap: 45px;
+}
+.project-card {
+  background: linear-gradient(120deg, #232d4a 77%, #00e4ff1c 100%);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 0 20px #00e4ff33;
+  border: 2px solid #00e4ff44;
+  transition: .3s;
+  position: relative;
+}
+.project-card:hover {
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 0 40px #00e4ffbb, 0 10px 40px #00a0dc66;
+  border: 2px solid #00e4ffbb;
+}
+.project-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display:block;
+}
+.project-content {
+  padding: 26px;
+}
+.project-content h3 {
+  color: var(--highlight);
+  margin-top: 0;
+}
+.project-tags {
+  margin:8px 0 12px 0;
+  display: flex; 
+  gap: 8px;
+}
+.project-tag {
+  font-size: 0.88rem;
+  padding: 5px 12px;
+  background: rgba(0,228,255,0.16);
+  color: var(--title-accent);
+  border-radius: 8px;
+  margin-right: 6px;
+}
+.project-links a {
+  color: var(--title-accent);
+  font-weight: 700;
+  padding: 7px 19px;
+  background: rgba(0, 160, 220, 0.17);
+  margin-right: 16px;
+  border-radius: 7px;
+  transition: .2s;
+  text-decoration: none;
+}
+.project-links a:hover {
+  background: rgba(0, 228, 255, .21);
+  color: var(--highlight);
+}
+.project-links a[target="_blank"]:after {
+  content:" ↗";
+  font-size:0.8em;
+  vertical-align:top;
+}
+/* Contact */
+.contact-form {
+  max-width: 600px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 19px;
+  background: linear-gradient(97deg, #232d4a 72%, #00e4ff1a 100%);
+  border-radius: 14px;
+  padding: 26px;
+  box-shadow: 0 0 24px #00e4ff46;
+  border: 2px solid #00e4ff30;
+}
+.contact-form input,
+.contact-form textarea {
+  padding: 16px;
+  border-radius: 11px;
+  border: none;
+  outline: none;
+  background: #16203c;
+  color: #c3eaff;
+  font-size: 1.05rem;
+  border: 1px solid #00a0dc33;
+}
+.contact-form textarea {resize:vertical;}
+.contact-form button {
+  background: var(--btn-gradient);
+  padding: 15px;
+  border-radius: 10px;
+  border: none;
+  font-weight: 700;
+  color: #fff;
+  cursor: pointer;
+  font-size: 1.09rem;
+  box-shadow: 0 0 14px #00e4ff66;
+  transition: .18s;
+}
+.contact-form button:hover {
+  background: var(--highlight);
+  color: #112040;
+}
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 34px;
+  margin-top: 36px;
+}
+.social-link {
+  font-size: 2rem;
+  color: #bffeff;
+  transition: .2s;
+}
+.social-link:hover {
+  color: var(--highlight);
+  transform: translateY(-4px);
+}
+.popup {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: var(--title-accent);
+  color: #fff;
+  padding: 15px 25px;
+  border-radius: 10px;
+  box-shadow: 0 0 12px var(--highlight);
+  opacity: 0;
+  transform: translateY(-50px);
+  transition: 0.5s;
+}
+.popup.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+/* Footer */
+.footer {
+  padding: 40px 0;
+  text-align: center;
+  color: #bffeff;
+  border-top: 1px solid #202a48;
+  font-size: 1.07rem;
+}
+@media(max-width:900px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .timeline::before {
+    left: 20px;
+    transform: translateX(0);
+  }
+  .timeline-item {
+    width: 100%;
+    text-align: left !important;
+    left: 0 !important;
+  }
+  .timeline-item.left::after,
+  .timeline-item.right::after {
+    left: 13px;
+  }
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+</head>
+<body>
+<header class="header">
+  <nav class="nav">
+    <a href="#hero">Home</a>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#timeline">Journey</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <div class="theme-toggle" id="themeToggle"><i class="fas fa-adjust"></i></div>
+</header>
+<button id="scrollTopBtn" class="scrollTopBtn">↑ Top</button>
+<section id="hero" class="hero">
+  <h1>I'm TEEJAN TEEPEE</h1>
+  <p class="typing"></p>
+  <p>Building <b>real-time, data-driven cloud solutions</b> and resilient web applications.</p>
+  <div class="cta-buttons">
+    <a href="#about" class="cta-button">Explore Profile</a>
+    <a href="Teejan.pdf" download class="cta-button">Download Resume</a>
+  </div>
+</section>
+<section id="about" class="section">
+  <h2 class="section-title">About Me</h2>
+  <div class="about-grid">
+    <img src="t.jpg" alt="Profile Picture" class="profile-image" loading="lazy">
+    <div class="about-text">
+      <h2>Full Stack Developer | Cloud & Real-Time Data Engineer (aspirant)</h2>
+      <p><b>Diploma in Computer Engineering</b> graduate; currently pursuing a <b>B.Tech degree (in progress)</b>.</p>
+      <p>
+        Focused on scalable cloud/web solutions, full-stack programming, database design, and system architecture.
+        My portfolio reflects <b>what I’ve actually built</b>—real projects using modern tech.
+      </p>
+      <p style="color:#00beff;">
+        Career Goal: Aspiring Cloud Engineer — building robust web apps, real-time databases, and scalable backends.
+      </p>
+      <div class="tech-stack">
+        <span class="tech-stack-icon"><i class="fab fa-python"></i></span> <span>Python</span>
+        <span class="tech-stack-icon"><i class="fab fa-js-square"></i></span> <span>JavaScript</span>
+        <span class="tech-stack-icon"><i class="fas fa-database"></i></span> <span>SQL</span>
+        <span class="tech-stack-icon"><i class="fas fa-cloud"></i></span> <span>Firebase</span>
+        <span class="tech-stack-icon"><i class="fas fa-microchip"></i></span> <span>ATMEGA32</span>
+        <span class="tech-stack-icon"><i class="fab fa-android"></i></span> <span>Django</span>
+      </div>
+      <div class="about-fun-facts">
+        <h3>Projects & Highlights</h3>
+        <ul>
+          <li>Built an embedded lock/IoT system (ATMEGA32)</li>
+          <li>Developed a real-time parking dashboard using Firebase</li>
+          <li>Participated in hackathons and practical labs to strengthen hands-on skills</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="skills" class="section">
+  <h2 class="section-title">Core Technical Capabilities</h2>
+  <div class="skills-grid">
+    <div class="skill-card"><h3>JavaScript</h3><p>Web Programming, Software Projects, Labs</p></div>
+    <div class="skill-card"><h3>Python</h3><p>Problem Solving, App Development, Labs</p></div>
+    <div class="skill-card"><h3>HTML & CSS</h3><p>Web Programming Labs, Frontend Projects</p></div>
+    <div class="skill-card"><h3>Database Systems</h3><p>DBMS, Database Management, SQL Labs</p></div>
+    <div class="skill-card"><h3>OOP / Data Structures</h3><p>C, Java, C++, Object Oriented Concepts</p></div>
+    <div class="skill-card"><h3>Full Stack Project</h3><p>Applications, Web Tech Project Labs</p></div>
+    <div class="skill-card"><h3>Networking & OS</h3><p>Computer Networks, Operating Systems</p></div>
+    <div class="skill-card"><h3>Embedded Systems</h3><p>Microprocessors, Embedded C, IoT</p></div>
+  </div>
+</section>
+<section id="timeline" class="section">
+  <h2 class="section-title">Professional Progression</h2>
+  <div class="timeline">
+    <div class="timeline-item left">
+      <h3>Diploma Foundations</h3>
+      <p>
+        Built core computer science fundamentals through diploma coursework and labs, laying the groundwork for advanced software engineering and systems work.
+      </p>
+    </div>
+    <div class="timeline-item right">
+      <h3>B.Tech (in progress)</h3>
+      <p>
+        Pursuing B.Tech degree with a focus on cloud computing, real-time systems, and scalable architecture—blending formal coursework and hands-on project learning.
+      </p>
+    </div>
+    <div class="timeline-item left">
+      <h3>PARKIKO – Real-time DB & Dashboards</h3>
+      <p>
+        Implemented a Firebase-powered real-time parking management app with secure authentication, dynamic role-based dashboards, and live booking/analytics—demonstrating full-stack and cloud integration skills.
+      </p>
+    </div>
+    <div class="timeline-item right">
+      <h3>Embedded Systems: Digital Lock Project</h3>
+      <p>
+        Designed and built a secure digital locking system on <b>ATmega32</b>:<br>
+        • Integrated keypad, EEPROM password logic, relay-driven lock control, and LCD feedback.<br>
+        • Developed and tested embedded C firmware and Proteus simulations.<br>
+        <b>Outcome: Demonstrated full hardware–software integration for real IoT security.</b>
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="projects" class="section">
+  <h2 class="section-title">Key Projects</h2>
+  <div class="projects-grid">
+
+    <!-- PARKIKO PROJECT CARD - UPDATED -->
+    <div class="project-card">
+      <img src="parkiko.png" alt="PARKIKO App" loading="lazy">
+      <div class="project-content">
+        <h3>PARKIKO: Smart Parking Management System</h3>
+        <div class="project-tags">
+          <span class="project-tag">Full Stack</span>
+          <span class="project-tag">Real-Time</span>
+          <span class="project-tag">Firebase</span>
+        </div>
+        <p>
+          <b>PARKIKO</b> is a <b style="color:#00e4ff;">Smart Parking Management System</b> enabling secure, real-time slot booking and role-based dashboards for customers, owners, and admins.<br><br>
+          /*🟢 <b>What I did: </b> Designed and built all dashboards, real-time booking logic, secure authentication, and full CRUD over Firebase.<br>
+          🛠 <b>Tech:</b> ES6 Modules, Firebase RTDB/Auth, Modular JS, Responsive HTML/CSS<br>
+          <b>Features:</b>
+          <ul style="margin-top:8px;margin-left:1em;color:#bffeff;font-size:1em;">
+            <li>Real-time find &amp; book parking slots (by status, price, type, availability)</li>
+            <li>Live dashboards for customers (MyBookings), owners (Slot/Revenue), admins (Analytics)</li>
+            <li>Owner revenue, booking and slot management modules</li>
+            <li>Integrated favorites and exportable data</li>
+            <li>Full SPA feel—instant UI updates on DB changes</li>
+          </ul>
+        </p>
+        <!-- <div class="project-links">
+          <a href="https://github.com/teejan7/parkiko" target="_blank" rel="noopener">View Code</a>
+        </div>-->
+    </div>
+  </div>
+    <!-- END PARKIKO CARD -->
+
+    <div class="project-card">
+      <img src="mov.png" alt="Django Ticketing" loading="lazy">
+      <div class="project-content">
+        <h3>Django Movie Ticket Booking System</h3>
+        <div class="project-tags">
+          <span class="project-tag">Django</span>
+          <span class="project-tag">Python</span>
+          <span class="project-tag">Full Stack</span>
+          <span class="project-tag">SQLite</span>
+        </div>
+        <p>
+          <b>Full stack web app</b> for multiplex/movie ticket bookings, built on Django with robust models, views, and a clean admin interface.<br><br>
+          <b>Features:</b>
+          <ul style="margin-top:8px;margin-left:1em;color:#bffeff;font-size:1em;">
+            <li>Movie and showtime database management with user authentication</li>
+            <li>Booking, seat allocation, and booking history</li>
+            <li>Admin dashboard for managing movies, users and sales records</li>
+            <li>Customizable templates and built-in Django admin tools</li>
+            <li>Secure, maintainable design for easy upgrades</li>
+          </ul>
+          <b>Tech Used:</b> Django 5.x, Python 3, HTML/CSS, SQLite3<br>
+          <b>Role:</b> Backend/Full Stack Development, ORM/Data Models
+        </p>
+        <!-- <div class="project-links"></div> -->
+      </div>
+    </div>
+
+
+    <div class="project-card">
+      <img src="emb_c.png" alt="Embedded Lock" loading="lazy">
+      <div class="project-content">
+        <h3>Embedded Locking System </h3>
+        <div class="project-tags">
+          <span class="project-tag">Embedded</span>
+          <span class="project-tag">ATMEGA32</span>
+          <span class="project-tag">RTOS</span>
+        </div>
+        <p>
+          An <b>embedded security system</b> designed on ATmega32, integrating keypad password input, EEPROM verification and digital lock control for real-world access security.<br><br>
+          <b>Features:</b>
+          <ul style="margin-top:8px;margin-left:1em;color:#bffeff;font-size:1em;">
+            <li>Real-time keypad scanning and password validation</li>
+            <li>Persistent storage and verification using EEPROM</li>
+            <li>Physical lock/unlock relay control with feedback on LCD</li>
+            <li>Designed, tested and simulated in Proteus for accuracy and robustness</li>
+            <li>Practical RTOS/embedded lab teamwork experience</li>
+          </ul>
+          <b>Tech Used:</b> Embedded C, AVR (ATmega32), Proteus, RTOS Lab hardware<br>
+          <b>Role:</b> System Integration & Testing
+        </p>
+        <!-- <div class="project-links"></div> -->
+      </div>
+    </div>
+
+
+  </div>
+</section>
+<section id="contact" class="section">
+  <h2 class="section-title">Connect with Me</h2>
+  <form class="contact-form" id="contactForm" action="https://formspree.io/f/xgvlkevd" method="POST">
+  <input type="text" name="name" placeholder="Your Name" required>
+  <input type="email" name="email" placeholder="Your Email" required>
+  <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+  <button type="submit">Send Message</button>
+</form>
+  <div class="social-links">
+    <a href="https://www.linkedin.com/in/teejan/" class="social-link" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i></a>
+    <a href="https://github.com/teejan7" class="social-link" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
+    <a href="mailto:teejan107@gmail.com" class="social-link" target="_blank" rel="noopener"><i class="fas fa-envelope"></i></a>
+  </div>
+  <div id="popup" class="popup">Message Sent Successfully!</div>
+</section>
+<footer class="footer">&copy; 2025 TEEJAN TEEPEE. All Rights Reserved.</footer>
+<script>
+document.getElementById('themeToggle').addEventListener('click', () => {
+  document.body.classList.toggle('light-theme');
+});
+window.onscroll = function () {
+  document.getElementById('scrollTopBtn').style.display = (document.documentElement.scrollTop > 300) ? 'block' : 'none';
+};
+document.getElementById('scrollTopBtn').onclick = function () {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+};
+const roles = [
+  'Real-Time Data Engineer',
+  'Python Developer',
+  'Cloud Application Builder',
+  'JavaScript Full Stack',
+  'Embedded Systems Programmer'
+];
+let i = 0, j = 0;
+const el = document.querySelector('.typing');
+function type() {
+  if (i < roles.length) {
+    if (j < roles[i].length) {
+      el.textContent += roles[i][j];
+      j++;
+      setTimeout(type, 100);
+    } else {
+      setTimeout(erase, 900);
+    }
+  } else {
+    i = 0;
+    setTimeout(type, 100);
+  }
+}
+function erase() {
+  if (j > 0) {
+    el.textContent = roles[i].substring(0, j - 1);
+    j--;
+    setTimeout(erase, 42);
+  } else {
+    i++;
+    setTimeout(type, 200);
+  }
+}
+type();
+const timelineItems = document.querySelectorAll('.timeline-item');
+window.addEventListener('scroll', function () {
+  timelineItems.forEach(item => {
+    if (item.getBoundingClientRect().top < window.innerHeight - 90)
+      item.classList.add('visible');
+  });
+});
+ const form = document.getElementById('contactForm');
+  const popup = document.getElementById('popup');
+
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    popup.classList.remove('show');
+
+    let valid = true;
+    if (!form.name.value.trim()) valid = false;
+    if (!form.email.value.match(/.+@.+\..+/)) valid = false;
+    if (!form.message.value.trim()) valid = false;
+
+    if (!valid) {
+      popup.textContent = "⚠️ Fill out all fields correctly.";
+      popup.classList.add('show');
+      setTimeout(() => popup.classList.remove('show'), 2500);
+      return;
+    }
+
+    fetch(form.action, { method: 'POST', body: new FormData(form) })
+      .then(r => {
+        if (r.ok) {
+          form.reset(); // ✅ Clears all fields
+          popup.textContent = "✅ Message Sent Successfully!";
+          popup.classList.add('show');
+          setTimeout(() => popup.classList.remove('show'), 2500);
+        } else {
+          popup.textContent = "❌ Submission failed. Try again.";
+          popup.classList.add('show');
+          setTimeout(() => popup.classList.remove('show'), 2500);
+        }
+      })
+      .catch(() => {
+        popup.textContent = "⚠️ Error submitting form.";
+        popup.classList.add('show');
+        setTimeout(() => popup.classList.remove('show'), 2500);
+      });
+  });
+
+</script>
+</body>
+</html>
